@@ -13,7 +13,7 @@
 		D0854ACD1DD08E5D0009F3FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0854ACB1DD08E5D0009F3FF /* LaunchScreen.storyboard */; };
 		D0854AD61DD08E7C0009F3FF /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0854AD51DD08E7C0009F3FF /* LoginViewController.m */; };
 		D0854AD91DD08F3C0009F3FF /* UserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0854AD81DD08F3C0009F3FF /* UserViewController.m */; };
-		D0854ADB1DD090630009F3FF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D0854ADA1DD090630009F3FF /* main.m */; };
+		D0854AE31DD0AE080009F3FF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D0854AE21DD0AE080009F3FF /* main.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,7 +28,7 @@
 		D0854AD51DD08E7C0009F3FF /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		D0854AD71DD08F3C0009F3FF /* UserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserViewController.h; sourceTree = "<group>"; };
 		D0854AD81DD08F3C0009F3FF /* UserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserViewController.m; sourceTree = "<group>"; };
-		D0854ADA1DD090630009F3FF /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ../../CurrentCopy/TestLoginSample/TestLoginSample/main.m; sourceTree = "<group>"; };
+		D0854AE21DD0AE080009F3FF /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,7 +61,7 @@
 		D0854ABC1DD08E5D0009F3FF /* MobileLibrary */ = {
 			isa = PBXGroup;
 			children = (
-				D0854ADA1DD090630009F3FF /* main.m */,
+				D0854AE21DD0AE080009F3FF /* main.m */,
 				D0854AD41DD08E7C0009F3FF /* LoginViewController.h */,
 				D0854AD51DD08E7C0009F3FF /* LoginViewController.m */,
 				D0854AC01DD08E5D0009F3FF /* AppDelegate.h */,
@@ -146,9 +146,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0854ADB1DD090630009F3FF /* main.m in Sources */,
 				D0854AD61DD08E7C0009F3FF /* LoginViewController.m in Sources */,
 				D0854AD91DD08F3C0009F3FF /* UserViewController.m in Sources */,
+				D0854AE31DD0AE080009F3FF /* main.m in Sources */,
 				D0854AC21DD08E5D0009F3FF /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -300,6 +300,7 @@
 				D0854AD31DD08E5D0009F3FF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

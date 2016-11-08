@@ -12,6 +12,10 @@
 float sdwidth,sdheight;
 UIView *homeView, *bookView, *profileView;
 UITextField *searchField;
+UITableView *tableview;
+
+NSArray *BooksDatas;
+NSArray *searchResults;
 
 @implementation UserViewController
 - (void)viewDidLoad {
@@ -89,6 +93,8 @@ UITextField *searchField;
     bookView = [[UIView alloc]initWithFrame:CGRectMake(0, 75, sdwidth, sdheight - 105)];
     [self.view addSubview:bookView];
     
+    [self fetchBookNames]; //Fill book names to list
+    
     searchField=[[UITextField alloc]initWithFrame:CGRectMake(sdwidth * 0.25, 10, sdwidth * 0.5, 30)];
     [bookView addSubview:searchField];
     
@@ -117,6 +123,71 @@ UITextField *searchField;
     [searchField setFont:[UIFont fontWithName:@"Avenir" size:14.f]];
     [searchField setKeyboardAppearance: UIKeyboardAppearanceAlert];
     searchField.returnKeyType = UIReturnKeyDone;
+    
+    
+    tableview = [[UITableView alloc] initWithFrame:CGRectMake(sdwidth*0.25, 41, sdwidth*0.5, sdheight/3)];
+    tableview.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+    tableview.delegate = self;
+    tableview.dataSource=self;
+    tableview.tintColor=[UIColor clearColor];
+    [tableview setBackgroundView:nil];
+    [tableview setBackgroundColor:[UIColor clearColor]];
+    tableview.userInteractionEnabled=false;
+    tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [bookView addSubview:tableview];
+}
+
+-(void)fetchBookNames{
+    BooksDatas = @[@"Anna Karenina",@"Alice in Wonderland",@"Wings of Fire",@"2 States",@"Half Girlfriend"];
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 21;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return [searchResults count];
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString *simpleTableIdentifier = @"RecipeCell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+    
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+    }
+    cell.textLabel.text = [searchResults objectAtIndex:indexPath.row];
+    return cell;
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    NSString *newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    [self filterContentForSearchText:newString scope:@""];
+    [tableview reloadData];
+    tableview.userInteractionEnabled=true;
+    return  YES;
+}
+
+- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
+{
+    NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"SELF contains[c] %@", searchText];
+    searchResults = [BooksDatas filteredArrayUsingPredicate:resultPredicate];
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSString *selectedbook=[searchResults objectAtIndex:indexPath.row];
+    searchResults=nil;
+    searchField.text = selectedbook;
+    [tableview reloadData];
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    searchResults=nil;
+    [tableview reloadData];
+    tableview.userInteractionEnabled=false;
 }
 
 -(void) ProfileView{

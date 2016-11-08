@@ -52,7 +52,8 @@ UITextField *searchField;
     
     [self MainView];
     
-    UIButton *lgoutBtn = [[UIButton alloc]initWithFrame:CGRectMake(sdwidth * 0.2, sdheight - 30, sdwidth * 0.6, 30)];
+    UIButton *lgoutBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, sdheight - 30, sdwidth, 30)];
+    lgoutBtn.backgroundColor = [UIColor orangeColor];
     [lgoutBtn setTitle:@"LogOut" forState:UIControlStateNormal];
     [lgoutBtn addTarget:self action:@selector(LogOut_BtnClk:) forControlEvents:UIControlEventTouchDown];
     [self.view addSubview:lgoutBtn];

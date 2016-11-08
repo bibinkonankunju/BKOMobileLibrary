@@ -92,15 +92,15 @@ UITextField *searchField;
     searchField=[[UITextField alloc]initWithFrame:CGRectMake(sdwidth * 0.25, 10, sdwidth * 0.5, 30)];
     [bookView addSubview:searchField];
     
-    //searchField.delegate=self;
+    searchField.delegate = self;
     searchField.backgroundColor=[UIColor whiteColor];
-//    UIImageView *imgSearch=[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)]; // Set frame as per space required around icon
-//    searchField.textColor=[UIColor whiteColor];
-//    [imgSearch setImage:[UIImage imageNamed:@"search_book.png"]];
-//    
-//    [imgSearch setContentMode:UIViewContentModeCenter];// Set content mode centre
-//    searchField.leftView=imgSearch;
+    UIImageView *imgSearch=[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)]; // Set frame as per space required around icon
+    [imgSearch setImage:[UIImage imageNamed:@"search_books.png"]];
+    [imgSearch setContentMode:UIViewContentModeCenter];// Set content mode centre
+    searchField.leftView=imgSearch;
     
+    
+    searchField.textColor=[UIColor whiteColor];
     searchField.leftViewMode=UITextFieldViewModeAlways;
     UIColor *color = [UIColor whiteColor];
     

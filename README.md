@@ -1,9 +1,7 @@
 # BKOMobileLibrary
 It is an iPhone application to request a book from a library.
 
-This project is in a development stage. 
-
-
+This is a Work In Progress ⚠️ ! Should be ready soon :)
 
 
 Development Software Details:

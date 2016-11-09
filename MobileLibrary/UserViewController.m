@@ -86,6 +86,12 @@ NSArray *searchResults;
     [self removeSuperViews];
     homeView = [[UIView alloc]initWithFrame:CGRectMake(0, 75, sdwidth, sdheight - 105)];
     [self.view addSubview:homeView];
+    
+    UILabel *welcomelbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 10, sdwidth, 50)];
+    welcomelbl.text = @"Welcome User";
+    welcomelbl.textAlignment = NSTextAlignmentCenter;
+    welcomelbl.font=[UIFont fontWithName:@"Papyrus" size:33.0];
+    [homeView addSubview:welcomelbl];
 }
 
 -(void) BookView{
@@ -197,6 +203,13 @@ NSArray *searchResults;
     [self removeSuperViews];
     profileView = [[UIView alloc]initWithFrame:CGRectMake(0, 75, sdwidth, sdheight - 105)];
     [self.view addSubview:profileView];
+    
+    UILabel *profilelbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 10, sdwidth, 50)];
+    profilelbl.text = @"User Profile";
+    profilelbl.textAlignment = NSTextAlignmentCenter;
+    profilelbl.font=[UIFont fontWithName:@"Papyrus" size:33.0];
+    [profileView addSubview:profilelbl];
+
 }
 
 -(void) removeSuperViews

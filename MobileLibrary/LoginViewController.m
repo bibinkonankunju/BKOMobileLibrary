@@ -25,15 +25,17 @@ UILabel *headlbl;
     swidth = screensize.size.width;
     sheight = screensize.size.height;
     
-    headlbl = [[UILabel alloc]init];
+    UILabel *applbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 30, swidth, 50)];
+    applbl.text = @"Online Library App";
+    applbl.textAlignment = NSTextAlignmentCenter;
+    applbl.backgroundColor = [UIColor lightTextColor];
+    applbl.font=[UIFont fontWithName:@"Papyrus" size:33.0];
+    [self.view addSubview:applbl];
+
+    
+    headlbl = [[UILabel alloc]initWithFrame:CGRectMake(swidth/3-15, sheight/3 - 75, swidth/2, 60) ];
     headlbl.text=@"User Login";
     headlbl.font=[UIFont fontWithName:@"Papyrus" size:33.0];
-    CGRect hfrm = headlbl.frame;
-    hfrm.origin.x = swidth/3-15;
-    hfrm.origin.y = sheight/3 - 75;
-    hfrm.size.height = 60;
-    hfrm.size.width = swidth/2;
-    headlbl.frame = hfrm;
     [self.view addSubview:headlbl];
     
     

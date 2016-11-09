@@ -95,6 +95,9 @@ NSArray *searchResults;
     
     [self fetchBookNames]; //Fill book names to list
     
+    searchResults = nil;
+    [tableview reloadData];
+    
     searchField=[[UITextField alloc]initWithFrame:CGRectMake(sdwidth * 0.25, 10, sdwidth * 0.5, 30)];
     [bookView addSubview:searchField];
     

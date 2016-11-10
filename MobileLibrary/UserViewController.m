@@ -92,6 +92,24 @@ NSArray *searchResults;
     welcomelbl.textAlignment = NSTextAlignmentCenter;
     welcomelbl.font=[UIFont fontWithName:@"Papyrus" size:33.0];
     [homeView addSubview:welcomelbl];
+    
+    UILabel *takenbooklbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 100, sdwidth, 50)];
+    takenbooklbl.text = @"Currently Reading..";
+    takenbooklbl.textAlignment = NSTextAlignmentCenter;
+    takenbooklbl.font=[UIFont fontWithName:@"TimesNewRoman" size:20.0];
+    [homeView addSubview:takenbooklbl];
+    
+    UILabel *wishlistlbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 200, sdwidth, 50)];
+    wishlistlbl.text = @"To Read..";
+    wishlistlbl.textAlignment = NSTextAlignmentCenter;
+    wishlistlbl.font=[UIFont fontWithName:@"TimesNewRoman" size:20.0];
+    [homeView addSubview:wishlistlbl];
+    
+    UILabel *favbooklbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 300, sdwidth, 50)];
+    favbooklbl.text = @"Favourites..";
+    favbooklbl.textAlignment = NSTextAlignmentCenter;
+    favbooklbl.font=[UIFont fontWithName:@"TimesNewRoman" size:20.0];
+    [homeView addSubview:favbooklbl];
 }
 
 -(void) BookView{

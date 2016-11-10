@@ -209,6 +209,11 @@ NSArray *searchResults;
     profilelbl.textAlignment = NSTextAlignmentCenter;
     profilelbl.font=[UIFont fontWithName:@"Papyrus" size:33.0];
     [profileView addSubview:profilelbl];
+    
+    UIImageView *imgUser = [[UIImageView alloc] initWithFrame:CGRectMake(5, 50, 50, 50)];
+    [imgUser setImage:[UIImage imageNamed:@"user.png"]];
+    [imgUser setContentMode:UIViewContentModeScaleAspectFit];
+    [profileView addSubview:imgUser];
 
 }
 

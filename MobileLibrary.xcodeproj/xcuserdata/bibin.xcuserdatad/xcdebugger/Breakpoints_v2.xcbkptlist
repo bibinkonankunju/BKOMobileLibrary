@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MobileLibrary/UserViewController.m"
-            timestampString = "500466460.5019"
+            timestampString = "500466936.010569"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "258"
-            endingLineNumber = "258"
+            startingLineNumber = "276"
+            endingLineNumber = "276"
             landmarkName = "-removeSuperViews"
             landmarkType = "5">
          </BreakpointContent>

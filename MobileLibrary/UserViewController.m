@@ -252,6 +252,24 @@ NSArray *searchResults;
     [imgUser setContentMode:UIViewContentModeScaleAspectFit];
     [profileView addSubview:imgUser];
 
+    UILabel *namelbl = [[UILabel alloc]initWithFrame:CGRectMake(57, 50, sdwidth - 57, 50)];
+    namelbl.text = @"Customer Name";
+    namelbl.textAlignment = NSTextAlignmentLeft;
+    namelbl.font=[UIFont fontWithName:@"TimesNewRoman" size:18.0];
+    [profileView addSubview:namelbl];
+    
+    UILabel *aboutlbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 150, sdwidth, 50)];
+    aboutlbl.text = @"About Me";
+    aboutlbl.textAlignment = NSTextAlignmentCenter;
+    aboutlbl.font=[UIFont fontWithName:@"TimesNewRoman" size:20.0];
+    [profileView addSubview:aboutlbl];
+    
+    UILabel *otherlbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 250, sdwidth, 50)];
+    otherlbl.text = @"Other Info";
+    otherlbl.textAlignment = NSTextAlignmentCenter;
+    otherlbl.font=[UIFont fontWithName:@"TimesNewRoman" size:20.0];
+    [profileView addSubview:otherlbl];
+    
 }
 
 -(void) removeSuperViews

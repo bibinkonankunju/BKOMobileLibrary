@@ -94,19 +94,19 @@ NSArray *searchResults;
     [homeView addSubview:welcomelbl];
     
     UILabel *takenbooklbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 100, sdwidth, 50)];
-    takenbooklbl.text = @"Currently Reading..";
+    takenbooklbl.text = @"Currently Reading";
     takenbooklbl.textAlignment = NSTextAlignmentCenter;
     takenbooklbl.font=[UIFont fontWithName:@"TimesNewRoman" size:20.0];
     [homeView addSubview:takenbooklbl];
     
     UILabel *wishlistlbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 200, sdwidth, 50)];
-    wishlistlbl.text = @"To Read..";
+    wishlistlbl.text = @"To Read";
     wishlistlbl.textAlignment = NSTextAlignmentCenter;
     wishlistlbl.font=[UIFont fontWithName:@"TimesNewRoman" size:20.0];
     [homeView addSubview:wishlistlbl];
     
     UILabel *favbooklbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 300, sdwidth, 50)];
-    favbooklbl.text = @"Favourites..";
+    favbooklbl.text = @"Favourites";
     favbooklbl.textAlignment = NSTextAlignmentCenter;
     favbooklbl.font=[UIFont fontWithName:@"TimesNewRoman" size:20.0];
     [homeView addSubview:favbooklbl];
@@ -162,6 +162,25 @@ NSArray *searchResults;
     tableview.userInteractionEnabled=false;
     tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
     [bookView addSubview:tableview];
+    
+    UILabel *newbooklbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 100, sdwidth, 50)];
+    newbooklbl.text = @"New Arrivals";
+    newbooklbl.textAlignment = NSTextAlignmentCenter;
+    newbooklbl.font=[UIFont fontWithName:@"TimesNewRoman" size:20.0];
+    [bookView addSubview:newbooklbl];
+    
+    UILabel *popularlistlbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 200, sdwidth, 50)];
+    popularlistlbl.text = @"Popular Books";
+    popularlistlbl.textAlignment = NSTextAlignmentCenter;
+    popularlistlbl.font=[UIFont fontWithName:@"TimesNewRoman" size:20.0];
+    [bookView addSubview:popularlistlbl];
+    
+    UILabel *waitbooklbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 300, sdwidth, 50)];
+    waitbooklbl.text = @"Available Soon";
+    waitbooklbl.textAlignment = NSTextAlignmentCenter;
+    waitbooklbl.font=[UIFont fontWithName:@"TimesNewRoman" size:20.0];
+    [bookView addSubview:waitbooklbl];
+
 }
 
 -(void)fetchBookNames{

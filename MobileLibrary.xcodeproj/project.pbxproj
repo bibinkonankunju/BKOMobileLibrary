@@ -8,17 +8,27 @@
 
 /* Begin PBXBuildFile section */
 		D07834C21DD582FD00872957 /* menu1.png in Resources */ = {isa = PBXBuildFile; fileRef = D07834B91DD582FD00872957 /* menu1.png */; };
+		D07834CB1DD5C79C00872957 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07834C71DD5C79C00872957 /* Bolts.framework */; };
+		D07834CC1DD5C79C00872957 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07834C81DD5C79C00872957 /* FBSDKCoreKit.framework */; };
+		D07834CD1DD5C79C00872957 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07834C91DD5C79C00872957 /* FBSDKLoginKit.framework */; };
+		D07834CE1DD5C79C00872957 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07834CA1DD5C79C00872957 /* FBSDKShareKit.framework */; };
+		D07834FF1DD5D10000872957 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D07834FE1DD5D10000872957 /* ViewController.m */; };
 		D0854AC21DD08E5D0009F3FF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D0854AC11DD08E5D0009F3FF /* AppDelegate.m */; };
 		D0854AC81DD08E5D0009F3FF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0854AC61DD08E5D0009F3FF /* Main.storyboard */; };
 		D0854ACA1DD08E5D0009F3FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0854AC91DD08E5D0009F3FF /* Assets.xcassets */; };
 		D0854ACD1DD08E5D0009F3FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0854ACB1DD08E5D0009F3FF /* LaunchScreen.storyboard */; };
-		D0854AD61DD08E7C0009F3FF /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0854AD51DD08E7C0009F3FF /* LoginViewController.m */; };
 		D0854AD91DD08F3C0009F3FF /* UserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0854AD81DD08F3C0009F3FF /* UserViewController.m */; };
 		D0854AE31DD0AE080009F3FF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D0854AE21DD0AE080009F3FF /* main.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D07834B91DD582FD00872957 /* menu1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu1.png; sourceTree = "<group>"; };
+		D07834C71DD5C79C00872957 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		D07834C81DD5C79C00872957 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		D07834C91DD5C79C00872957 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		D07834CA1DD5C79C00872957 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
+		D07834FD1DD5D10000872957 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		D07834FE1DD5D10000872957 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		D0854ABA1DD08E5D0009F3FF /* MobileLibrary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileLibrary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0854AC01DD08E5D0009F3FF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D0854AC11DD08E5D0009F3FF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -26,8 +36,6 @@
 		D0854AC91DD08E5D0009F3FF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D0854ACC1DD08E5D0009F3FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D0854ACE1DD08E5D0009F3FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D0854AD41DD08E7C0009F3FF /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		D0854AD51DD08E7C0009F3FF /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		D0854AD71DD08F3C0009F3FF /* UserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserViewController.h; sourceTree = "<group>"; };
 		D0854AD81DD08F3C0009F3FF /* UserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserViewController.m; sourceTree = "<group>"; };
 		D0854AE21DD0AE080009F3FF /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -38,6 +46,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D07834CB1DD5C79C00872957 /* Bolts.framework in Frameworks */,
+				D07834CC1DD5C79C00872957 /* FBSDKCoreKit.framework in Frameworks */,
+				D07834CD1DD5C79C00872957 /* FBSDKLoginKit.framework in Frameworks */,
+				D07834CE1DD5C79C00872957 /* FBSDKShareKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -47,6 +59,10 @@
 		D0854AB11DD08E5D0009F3FF = {
 			isa = PBXGroup;
 			children = (
+				D07834C71DD5C79C00872957 /* Bolts.framework */,
+				D07834C81DD5C79C00872957 /* FBSDKCoreKit.framework */,
+				D07834C91DD5C79C00872957 /* FBSDKLoginKit.framework */,
+				D07834CA1DD5C79C00872957 /* FBSDKShareKit.framework */,
 				D0854ABC1DD08E5D0009F3FF /* MobileLibrary */,
 				D0854ABB1DD08E5D0009F3FF /* Products */,
 			);
@@ -65,8 +81,6 @@
 			children = (
 				D07834B91DD582FD00872957 /* menu1.png */,
 				D0854AE21DD0AE080009F3FF /* main.m */,
-				D0854AD41DD08E7C0009F3FF /* LoginViewController.h */,
-				D0854AD51DD08E7C0009F3FF /* LoginViewController.m */,
 				D0854AC01DD08E5D0009F3FF /* AppDelegate.h */,
 				D0854AC11DD08E5D0009F3FF /* AppDelegate.m */,
 				D0854AC61DD08E5D0009F3FF /* Main.storyboard */,
@@ -75,6 +89,8 @@
 				D0854ACE1DD08E5D0009F3FF /* Info.plist */,
 				D0854AD71DD08F3C0009F3FF /* UserViewController.h */,
 				D0854AD81DD08F3C0009F3FF /* UserViewController.m */,
+				D07834FD1DD5D10000872957 /* ViewController.h */,
+				D07834FE1DD5D10000872957 /* ViewController.m */,
 			);
 			path = MobileLibrary;
 			sourceTree = "<group>";
@@ -150,10 +166,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0854AD61DD08E7C0009F3FF /* LoginViewController.m in Sources */,
 				D0854AD91DD08F3C0009F3FF /* UserViewController.m in Sources */,
 				D0854AE31DD0AE080009F3FF /* main.m in Sources */,
 				D0854AC21DD08E5D0009F3FF /* AppDelegate.m in Sources */,
+				D07834FF1DD5D10000872957 /* ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,6 +283,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = MobileLibrary/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Grindan.MobileLibrary;
@@ -278,6 +298,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = MobileLibrary/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Grindan.MobileLibrary;

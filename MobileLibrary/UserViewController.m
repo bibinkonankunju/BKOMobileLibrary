@@ -7,7 +7,7 @@
 //
 
 #import "UserViewController.h"
-#import "LoginViewController.h"
+#import "ViewController.h"
 
 float sdwidth,sdheight,menuimgwidth;
 UIView *homeView, *bookView, *profileView, *leftView, *rightview, *centreView;
@@ -433,7 +433,7 @@ NSArray *searchResults;
 }
 
 - (IBAction)LogOut_BtnClk:(id)sender {
-    LoginViewController *uvc = [[LoginViewController alloc]init];
+    ViewController *uvc = [[ViewController alloc]init];
     [self presentViewController:uvc animated:YES completion:nil];
 }
 

@@ -10,4 +10,7 @@
 
 @interface UserViewController : UIViewController<UITableViewDelegate,UITextFieldDelegate,UITableViewDataSource>
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *Leftbarbutton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *Rightbarbutton;
+
 @end

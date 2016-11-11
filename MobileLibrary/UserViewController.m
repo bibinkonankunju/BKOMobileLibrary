@@ -9,59 +9,126 @@
 #import "UserViewController.h"
 #import "LoginViewController.h"
 
-float sdwidth,sdheight;
-UIView *homeView, *bookView, *profileView;
+float sdwidth,sdheight,menuimgwidth;
+UIView *homeView, *bookView, *profileView, *leftView, *rightview, *centreView;
 UITextField *searchField;
 UITableView *tableview;
+UITapGestureRecognizer *centerClick;
 
 NSArray *BooksDatas;
 NSArray *searchResults;
 
+@interface UserViewController()
+@end
+
+
 @implementation UserViewController
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
 
     CGRect screensize = [[UIScreen mainScreen]bounds];
     sdwidth = screensize.size.width;
     sdheight = screensize.size.height;
+    
+    menuimgwidth = sdwidth * 0.1;
+    
+    CGRect mainrect = self.view.frame;
+    mainrect.origin.x = - (sdwidth - menuimgwidth);
+    mainrect.origin.y = 0;
+    mainrect.size.height = sdheight;
+    mainrect.size.width = sdwidth + 2 * (sdwidth - menuimgwidth);
+    self.view.frame = mainrect;
+    
+    leftView = [[UIView alloc]initWithFrame:CGRectMake(-(sdwidth - menuimgwidth), 25, sdwidth - menuimgwidth, sdheight-25)];
+    centreView = [[UIView alloc]initWithFrame:CGRectMake(0, 25, sdwidth, sdheight-25)];
+    rightview = [[UIView alloc]initWithFrame:CGRectMake(sdwidth, 25, sdwidth - menuimgwidth, sdheight-25)];
+    [self.view addSubview:leftView];
+    [self.view addSubview:centreView];
+    [self.view addSubview:rightview];
 
     self.view.backgroundColor = [UIColor lightGrayColor];
 
-    [self loadContents];
+    [self loadleftView];
+    [self loadcenterView];
+    [self loadrightView];
     
 }
 
--(void)loadContents{
+-(void)loadleftView{
+    leftView.backgroundColor = [UIColor redColor];
+    
+    UIButton *lgoutBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, sdheight - 55, sdwidth - menuimgwidth, 30)];
+    lgoutBtn.backgroundColor = [UIColor orangeColor];
+    [lgoutBtn setTitle:@"LogOut" forState:UIControlStateNormal];
+    [lgoutBtn addTarget:self action:@selector(LogOut_BtnClk:) forControlEvents:UIControlEventTouchDown];
+    [leftView addSubview:lgoutBtn];
+}
+
+-(void)loadrightView{
+    rightview.backgroundColor = [UIColor purpleColor];
+}
+
+-(void)loadcenterView{
+    centreView.backgroundColor = [UIColor magentaColor];
+    
+    UIImage *leftbtnImage = [UIImage imageNamed:@"menu1.png"];
+    UIButton *leftmenuBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 50, menuimgwidth - 4, 25)];
+    [leftmenuBtn setImage:leftbtnImage forState:UIControlStateNormal];
+    [leftmenuBtn addTarget:self action:@selector(leftviewCall) forControlEvents:UIControlEventTouchUpInside];
+    [centreView addSubview:leftmenuBtn];
+    
+    UIImage *rightbtnImage = [UIImage imageNamed:@"menu1.png"];
+    UIButton *rightmenuBtn = [[UIButton alloc]initWithFrame:CGRectMake(sdwidth * 0.9 + 2 , 50, menuimgwidth - 4, 25)];
+    [rightmenuBtn setImage:rightbtnImage forState:UIControlStateNormal];
+    [rightmenuBtn addTarget:self action:@selector(rightviewCall) forControlEvents:UIControlEventTouchUpInside];
+    [centreView addSubview:rightmenuBtn];
+    
+    centerClick =[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(centerviewCall:)];
+    centerClick.numberOfTouchesRequired = 1;
+    [centreView addGestureRecognizer:centerClick];
     
     NSArray *itemArray = [NSArray arrayWithObjects: @"Home", @"Books", @"Profile", nil];
     UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:itemArray];
     [segmentedControl addTarget:self action:@selector(MySegmentControlAction:) forControlEvents: UIControlEventValueChanged];
     segmentedControl.selectedSegmentIndex = 0;
     segmentedControl.tintColor = [UIColor whiteColor];
-    [self.view addSubview:segmentedControl];
+    [centreView addSubview:segmentedControl];
     
     CGRect segframe=segmentedControl.frame;
     segframe.size.width = sdwidth * 0.8;
     segframe.size.height = 25;
-    segframe.origin.x = sdwidth * 0.1;
+    segframe.origin.x = menuimgwidth;
     segframe.origin.y = 50;
     segmentedControl.frame=segframe;
     
-    homeView = [[UIView alloc]initWithFrame:CGRectMake(0, 75, sdwidth, sdheight - 105)];
-    bookView = [[UIView alloc]initWithFrame:CGRectMake(0, 75, sdwidth, sdheight - 105)];
-    profileView = [[UIView alloc]initWithFrame:CGRectMake(0, 75, sdwidth, sdheight - 105)];
-    [self.view addSubview:homeView];
-    [self.view addSubview:bookView];
-    [self.view addSubview:profileView];
+    homeView = [[UIView alloc]initWithFrame:CGRectMake(0, 75, sdwidth, sdheight - 75)];
+    bookView = [[UIView alloc]initWithFrame:CGRectMake(0, 75, sdwidth, sdheight - 75)];
+    profileView = [[UIView alloc]initWithFrame:CGRectMake(0, 75, sdwidth, sdheight - 75)];
+    [centreView addSubview:homeView];
+    [centreView addSubview:bookView];
+    [centreView addSubview:profileView];
     
     [self MainView];
     
-    UIButton *lgoutBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, sdheight - 30, sdwidth, 30)];
-    lgoutBtn.backgroundColor = [UIColor orangeColor];
-    [lgoutBtn setTitle:@"LogOut" forState:UIControlStateNormal];
-    [lgoutBtn addTarget:self action:@selector(LogOut_BtnClk:) forControlEvents:UIControlEventTouchDown];
-    [self.view addSubview:lgoutBtn];
-    
+}
+
+-(void)leftviewCall{
+    leftView.frame = CGRectMake(0, 25, sdwidth - menuimgwidth, sdheight-25);
+    centreView.frame = CGRectMake(sdwidth - menuimgwidth, 25, sdwidth, sdheight-25);
+    rightview.frame = CGRectMake(sdwidth + (sdwidth - menuimgwidth), 25, sdwidth - menuimgwidth, sdheight-25);
+}
+
+-(void)rightviewCall{
+    leftView.frame = CGRectMake(- 2*(sdwidth - menuimgwidth), 25, sdwidth - menuimgwidth, sdheight-25);
+    centreView.frame = CGRectMake(-(sdwidth - menuimgwidth), 25, sdwidth, sdheight-25);
+    rightview.frame = CGRectMake(menuimgwidth, 25, sdwidth - menuimgwidth, sdheight-25);
+}
+
+-(void)centerviewCall:(UITapGestureRecognizer *)recognizer{
+    leftView.frame = CGRectMake(-(sdwidth - menuimgwidth), 25, sdwidth - menuimgwidth, sdheight-25);
+    centreView.frame = CGRectMake(0, 25, sdwidth, sdheight-25);
+    rightview.frame = CGRectMake(sdwidth, 25, sdwidth - menuimgwidth, sdheight-25);
 }
 
 -(void)MySegmentControlAction : (UISegmentedControl*) sender
@@ -85,7 +152,7 @@ NSArray *searchResults;
 -(void) MainView{
     [self removeSuperViews];
     homeView = [[UIView alloc]initWithFrame:CGRectMake(0, 75, sdwidth, sdheight - 105)];
-    [self.view addSubview:homeView];
+    [centreView addSubview:homeView];
     
     UILabel *welcomelbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 10, sdwidth, 50)];
     welcomelbl.text = @"Welcome User";
@@ -115,7 +182,7 @@ NSArray *searchResults;
 -(void) BookView{
     [self removeSuperViews];
     bookView = [[UIView alloc]initWithFrame:CGRectMake(0, 75, sdwidth, sdheight - 105)];
-    [self.view addSubview:bookView];
+    [centreView addSubview:bookView];
     
     [self fetchBookNames]; //Fill book names to list
     
@@ -239,7 +306,7 @@ NSArray *searchResults;
 -(void) ProfileView{
     [self removeSuperViews];
     profileView = [[UIView alloc]initWithFrame:CGRectMake(0, 75, sdwidth, sdheight - 105)];
-    [self.view addSubview:profileView];
+    [centreView addSubview:profileView];
     
     UILabel *profilelbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 10, sdwidth, 50)];
     profilelbl.text = @"User Profile";
@@ -284,6 +351,11 @@ NSArray *searchResults;
     [self presentViewController:uvc animated:YES completion:nil];
 }
 
+- (void) didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
 
 @end
 

@@ -114,21 +114,94 @@ NSArray *searchResults;
 }
 
 -(void)leftviewCall{
-    leftView.frame = CGRectMake(0, 25, sdwidth - menuimgwidth, sdheight-25);
-    centreView.frame = CGRectMake(sdwidth - menuimgwidth, 25, sdwidth, sdheight-25);
-    rightview.frame = CGRectMake(sdwidth + (sdwidth - menuimgwidth), 25, sdwidth - menuimgwidth, sdheight-25);
+    
+    [UIView animateWithDuration:0.35
+                          delay:0.0
+                        options: UIViewAnimationCurveEaseOut
+                     animations:^{
+                         [leftView setFrame:CGRectMake(0, 25, sdwidth - menuimgwidth, sdheight-25)];
+                     }
+                     completion:^(BOOL finished){
+                         
+                     }];
+    [UIView animateWithDuration:0.35
+                          delay:0.0
+                        options: UIViewAnimationCurveEaseOut
+                     animations:^{
+                         [centreView setFrame:CGRectMake(sdwidth - menuimgwidth, 25, sdwidth, sdheight-25)];
+                     }
+                     completion:^(BOOL finished){
+                         
+                     }];
+    [UIView animateWithDuration:0.35
+                          delay:0.0
+                        options: UIViewAnimationCurveEaseOut
+                     animations:^{
+                         [rightview setFrame:CGRectMake(sdwidth + (sdwidth - menuimgwidth), 25, sdwidth - menuimgwidth, sdheight-25)];
+                     }
+                     completion:^(BOOL finished){
+                         
+                     }];
 }
 
 -(void)rightviewCall{
-    leftView.frame = CGRectMake(- 2*(sdwidth - menuimgwidth), 25, sdwidth - menuimgwidth, sdheight-25);
-    centreView.frame = CGRectMake(-(sdwidth - menuimgwidth), 25, sdwidth, sdheight-25);
-    rightview.frame = CGRectMake(menuimgwidth, 25, sdwidth - menuimgwidth, sdheight-25);
+    [UIView animateWithDuration:0.35
+                          delay:0.0
+                        options: UIViewAnimationCurveEaseOut
+                     animations:^{
+                         [leftView setFrame:CGRectMake(- 2*(sdwidth - menuimgwidth), 25, sdwidth - menuimgwidth, sdheight-25)];
+                     }
+                     completion:^(BOOL finished){
+                         
+                     }];
+    [UIView animateWithDuration:0.35
+                          delay:0.0
+                        options: UIViewAnimationCurveEaseOut
+                     animations:^{
+                         [centreView setFrame:CGRectMake(-(sdwidth - menuimgwidth), 25, sdwidth, sdheight-25)];
+                     }
+                     completion:^(BOOL finished){
+                         
+                     }];
+    [UIView animateWithDuration:0.35
+                          delay:0.0
+                        options: UIViewAnimationCurveEaseOut
+                     animations:^{
+                         [rightview setFrame:CGRectMake(menuimgwidth, 25, sdwidth - menuimgwidth, sdheight-25)];
+                     }
+                     completion:^(BOOL finished){
+                         
+                     }];
 }
 
 -(void)centerviewCall:(UITapGestureRecognizer *)recognizer{
-    leftView.frame = CGRectMake(-(sdwidth - menuimgwidth), 25, sdwidth - menuimgwidth, sdheight-25);
-    centreView.frame = CGRectMake(0, 25, sdwidth, sdheight-25);
-    rightview.frame = CGRectMake(sdwidth, 25, sdwidth - menuimgwidth, sdheight-25);
+    [UIView animateWithDuration:0.35
+                          delay:0.0
+                        options: UIViewAnimationCurveEaseOut
+                     animations:^{
+                         [leftView setFrame:CGRectMake(-(sdwidth - menuimgwidth), 25, sdwidth - menuimgwidth, sdheight-25)];
+                     }
+                     completion:^(BOOL finished){
+                         
+                     }];
+    [UIView animateWithDuration:0.35
+                          delay:0.0
+                        options: UIViewAnimationCurveEaseOut
+                     animations:^{
+                         [centreView setFrame:CGRectMake(0, 25, sdwidth, sdheight-25)];
+                     }
+                     completion:^(BOOL finished){
+                         
+                     }];
+    [UIView animateWithDuration:0.35
+                          delay:0.0
+                        options: UIViewAnimationCurveEaseOut
+                     animations:^{
+                         [rightview setFrame:CGRectMake(sdwidth, 25, sdwidth - menuimgwidth, sdheight-25)];
+                     }
+                     completion:^(BOOL finished){
+                         
+                     }];
 }
 
 -(void)MySegmentControlAction : (UISegmentedControl*) sender

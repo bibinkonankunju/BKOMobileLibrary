@@ -114,7 +114,12 @@ NSArray *searchResults;
 }
 
 -(void)leftviewCall{
-    
+    if(leftView.frame.origin.x == 0)
+    {
+        [self centerviewCall:nil];
+    }
+    else
+    {
     [UIView animateWithDuration:0.35
                           delay:0.0
                         options: UIViewAnimationCurveEaseOut
@@ -142,9 +147,16 @@ NSArray *searchResults;
                      completion:^(BOOL finished){
                          
                      }];
+    }
 }
 
 -(void)rightviewCall{
+    if(rightview.frame.origin.x == menuimgwidth)
+    {
+        [self centerviewCall:nil];
+    }
+    else
+    {
     [UIView animateWithDuration:0.35
                           delay:0.0
                         options: UIViewAnimationCurveEaseOut
@@ -172,6 +184,7 @@ NSArray *searchResults;
                      completion:^(BOOL finished){
                          
                      }];
+    }
 }
 
 -(void)centerviewCall:(UITapGestureRecognizer *)recognizer{

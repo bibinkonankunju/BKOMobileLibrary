@@ -15,6 +15,7 @@ iOs   => Version 9.3
 Edit Info.plist and replace:
 
 {FACEBOOK_APP_ID}
+
 {Your App Name}
 
 

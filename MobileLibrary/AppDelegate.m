@@ -8,6 +8,9 @@
 
 #import "AppDelegate.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
+@import GoogleMaps;
+
+NSString *APIKey = @“{YOUR_GOOGLE_API_KEY}”;
 
 @interface AppDelegate ()
 
@@ -21,6 +24,7 @@
     
     [[FBSDKApplicationDelegate sharedInstance] application:application
                              didFinishLaunchingWithOptions:launchOptions];
+    [GMSServices provideAPIKey:APIKey];
         
     return YES;
 }

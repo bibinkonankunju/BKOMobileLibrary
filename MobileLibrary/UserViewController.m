@@ -8,6 +8,7 @@
 
 #import "UserViewController.h"
 #import "ViewController.h"
+#import <GoogleMaps/GoogleMaps.h>
 
 float sdwidth,sdheight,menuimgwidth;
 UIView *homeView, *bookView, *contactView, *leftView, *rightview, *centreView;
@@ -18,6 +19,9 @@ UITapGestureRecognizer *centerClick;
 NSArray *BooksDatas;
 NSArray *searchResults;
 
+CLGeocoder *ceo;
+CLLocationManager *locationManager;
+
 @interface UserViewController()
 @end
 
@@ -27,6 +31,11 @@ NSArray *searchResults;
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+    
+    
+    locationManager = [[CLLocationManager alloc]init];
+    locationManager.delegate = self;
+    [locationManager startUpdatingLocation];
 
     CGRect screensize = [[UIScreen mainScreen]bounds];
     sdwidth = screensize.size.width;
@@ -275,6 +284,23 @@ NSArray *searchResults;
     profilelbl.textAlignment = NSTextAlignmentCenter;
     profilelbl.font=[UIFont fontWithName:@"Papyrus" size:33.0];
     [contactView addSubview:profilelbl];
+    
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:8.5241
+                                                            longitude:76.9366
+                                                                 zoom:6];
+
+    GMSMapView *mapView = [GMSMapView mapWithFrame:CGRectMake(0, 50, sdwidth, sdheight - 145) camera:camera];
+    mapView.myLocationEnabled = YES;
+    [contactView addSubview:mapView];
+    
+    // Creates a marker in the center of the map.
+    GMSMarker *marker = [[GMSMarker alloc] init];
+    marker.position = CLLocationCoordinate2DMake(8.5241, 76.9366);
+    marker.title = @"Trivandrum";
+    marker.snippet = @"Kerala, India";
+    marker.appearAnimation = kGMSMarkerAnimationPop;
+    marker.icon = [UIImage imageNamed:@"MarkerIcon"];
+    marker.map = mapView;
 }
 
 #pragma mark - CenterViewSupportingMethods

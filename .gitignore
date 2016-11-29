@@ -8,6 +8,8 @@
 
 *~.nib
 
+Pods/
+
 DerivedData/
 
 build/

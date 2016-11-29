@@ -10,7 +10,7 @@
 #import "ViewController.h"
 
 float sdwidth,sdheight,menuimgwidth;
-UIView *homeView, *bookView, *profileView, *leftView, *rightview, *centreView;
+UIView *homeView, *bookView, *contactView, *leftView, *rightview, *centreView;
 UITextField *searchField;
 UITableView *tableview;
 UITapGestureRecognizer *centerClick;
@@ -23,6 +23,7 @@ NSArray *searchResults;
 
 
 @implementation UserViewController
+
 - (void)viewDidLoad {
     
     [super viewDidLoad];
@@ -55,8 +56,49 @@ NSArray *searchResults;
     
 }
 
+- (void) didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - LeftSideView
+
 -(void)loadleftView{
     leftView.backgroundColor = [UIColor redColor];
+    
+    UILabel *profilelbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 50, sdwidth - menuimgwidth, 50)];
+    profilelbl.text = @"User Profile";
+    profilelbl.textAlignment = NSTextAlignmentCenter;
+    profilelbl.font=[UIFont fontWithName:@"Papyrus" size:33.0];
+    [leftView addSubview:profilelbl];
+    
+    UIImageView *imgUser = [[UIImageView alloc] initWithFrame:CGRectMake(5, 100, 50, 50)];
+    [imgUser setImage:[UIImage imageNamed:@"user.png"]];
+    [imgUser setContentMode:UIViewContentModeScaleAspectFit];
+    [leftView addSubview:imgUser];
+    
+    UILabel *namelbl = [[UILabel alloc]initWithFrame:CGRectMake(57, 100, sdwidth - menuimgwidth - 57, 50)];
+    namelbl.text = @"Customer Name";
+    namelbl.textAlignment = NSTextAlignmentLeft;
+    namelbl.font=[UIFont fontWithName:@"TimesNewRoman" size:18.0];
+    [leftView addSubview:namelbl];
+    
+    UILabel *aboutlbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 200, sdwidth - menuimgwidth, 50)];
+    aboutlbl.text = @"About Me";
+    aboutlbl.textAlignment = NSTextAlignmentCenter;
+    aboutlbl.font=[UIFont fontWithName:@"TimesNewRoman" size:20.0];
+    [leftView addSubview:aboutlbl];
+    
+    UILabel *otherlbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 300, sdwidth - menuimgwidth, 50)];
+    otherlbl.text = @"Other Info";
+    otherlbl.textAlignment = NSTextAlignmentCenter;
+    otherlbl.font=[UIFont fontWithName:@"TimesNewRoman" size:20.0];
+    [leftView addSubview:otherlbl];
+
+    
+    
+    
     
     UIButton *lgoutBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, sdheight - 55, sdwidth - menuimgwidth, 30)];
     lgoutBtn.backgroundColor = [UIColor orangeColor];
@@ -65,9 +107,18 @@ NSArray *searchResults;
     [leftView addSubview:lgoutBtn];
 }
 
+- (IBAction)LogOut_BtnClk:(id)sender {
+    ViewController *uvc = [[ViewController alloc]init];
+    [self presentViewController:uvc animated:YES completion:nil];
+}
+
+#pragma mark - RightSideView
+
 -(void)loadrightView{
     rightview.backgroundColor = [UIColor purpleColor];
 }
+
+#pragma mark - CenterSideView
 
 -(void)loadcenterView{
     centreView.backgroundColor = [UIColor magentaColor];
@@ -88,7 +139,7 @@ NSArray *searchResults;
     centerClick.numberOfTouchesRequired = 1;
     [centreView addGestureRecognizer:centerClick];
     
-    NSArray *itemArray = [NSArray arrayWithObjects: @"Home", @"Books", @"Profile", nil];
+    NSArray *itemArray = [NSArray arrayWithObjects: @"Home", @"Books", @"Contact", nil];
     UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:itemArray];
     [segmentedControl addTarget:self action:@selector(MySegmentControlAction:) forControlEvents: UIControlEventValueChanged];
     segmentedControl.selectedSegmentIndex = 0;
@@ -104,14 +155,184 @@ NSArray *searchResults;
     
     homeView = [[UIView alloc]initWithFrame:CGRectMake(0, 75, sdwidth, sdheight - 75)];
     bookView = [[UIView alloc]initWithFrame:CGRectMake(0, 75, sdwidth, sdheight - 75)];
-    profileView = [[UIView alloc]initWithFrame:CGRectMake(0, 75, sdwidth, sdheight - 75)];
+    contactView = [[UIView alloc]initWithFrame:CGRectMake(0, 75, sdwidth, sdheight - 75)];
     [centreView addSubview:homeView];
     [centreView addSubview:bookView];
-    [centreView addSubview:profileView];
+    [centreView addSubview:contactView];
     
     [self MainView];
     
 }
+
+-(void) MainView{
+    [self removeSuperViews];
+    homeView = [[UIView alloc]initWithFrame:CGRectMake(0, 75, sdwidth, sdheight - 105)];
+    [centreView addSubview:homeView];
+    
+    UILabel *welcomelbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 10, sdwidth, 50)];
+    welcomelbl.text = @"Welcome User";
+    welcomelbl.textAlignment = NSTextAlignmentCenter;
+    welcomelbl.font=[UIFont fontWithName:@"Papyrus" size:33.0];
+    [homeView addSubview:welcomelbl];
+    
+    UILabel *takenbooklbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 100, sdwidth, 50)];
+    takenbooklbl.text = @"Currently Reading";
+    takenbooklbl.textAlignment = NSTextAlignmentCenter;
+    takenbooklbl.font=[UIFont fontWithName:@"TimesNewRoman" size:20.0];
+    [homeView addSubview:takenbooklbl];
+    
+    UILabel *wishlistlbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 200, sdwidth, 50)];
+    wishlistlbl.text = @"To Read";
+    wishlistlbl.textAlignment = NSTextAlignmentCenter;
+    wishlistlbl.font=[UIFont fontWithName:@"TimesNewRoman" size:20.0];
+    [homeView addSubview:wishlistlbl];
+    
+    UILabel *favbooklbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 300, sdwidth, 50)];
+    favbooklbl.text = @"Favourites";
+    favbooklbl.textAlignment = NSTextAlignmentCenter;
+    favbooklbl.font=[UIFont fontWithName:@"TimesNewRoman" size:20.0];
+    [homeView addSubview:favbooklbl];
+}
+
+-(void) BookView{
+    [self removeSuperViews];
+    bookView = [[UIView alloc]initWithFrame:CGRectMake(0, 75, sdwidth, sdheight - 105)];
+    [centreView addSubview:bookView];
+    
+    [self fetchBookNames]; //Fill book names to list
+    
+    searchResults = nil;
+    [tableview reloadData];
+    
+    searchField=[[UITextField alloc]initWithFrame:CGRectMake(sdwidth * 0.25, 10, sdwidth * 0.5, 30)];
+    [bookView addSubview:searchField];
+    
+    searchField.delegate = self;
+    searchField.backgroundColor=[UIColor whiteColor];
+    UIImageView *imgSearch=[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)]; // Set frame as per space required around icon
+    [imgSearch setImage:[UIImage imageNamed:@"search_books.png"]];
+    [imgSearch setContentMode:UIViewContentModeCenter];// Set content mode centre
+    searchField.leftView=imgSearch;
+    
+    
+    searchField.textColor=[UIColor whiteColor];
+    searchField.leftViewMode=UITextFieldViewModeAlways;
+    UIColor *color = [UIColor whiteColor];
+    
+    NSDictionary *textAttributes =@{ NSFontAttributeName : [UIFont fontWithName:@"Avenir" size:12.f] ,NSForegroundColorAttributeName:color};
+    NSAttributedString *attributedPlaceholder =[[NSAttributedString alloc] initWithString:@"Search Books" attributes:textAttributes];
+    [searchField setAttributedPlaceholder:attributedPlaceholder];
+    searchField.textAlignment=NSTextAlignmentLeft;
+    searchField.layer.cornerRadius=5;
+    searchField.layer.masksToBounds=true;
+    searchField.layer.borderColor=[UIColor whiteColor].CGColor;
+    searchField.backgroundColor=[UIColor clearColor];
+    searchField.layer.borderWidth=1;
+    searchField.tintColor=[UIColor whiteColor];
+    [searchField setFont:[UIFont fontWithName:@"Avenir" size:14.f]];
+    [searchField setKeyboardAppearance: UIKeyboardAppearanceAlert];
+    searchField.returnKeyType = UIReturnKeyDone;
+    
+    
+    tableview = [[UITableView alloc] initWithFrame:CGRectMake(sdwidth*0.25, 41, sdwidth*0.5, sdheight/3)];
+    tableview.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+    tableview.delegate = self;
+    tableview.dataSource=self;
+    tableview.tintColor=[UIColor clearColor];
+    [tableview setBackgroundView:nil];
+    [tableview setBackgroundColor:[UIColor clearColor]];
+    tableview.userInteractionEnabled=false;
+    tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [bookView addSubview:tableview];
+    
+    UILabel *newbooklbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 120, sdwidth, 50)];
+    newbooklbl.text = @"New Arrivals";
+    newbooklbl.textAlignment = NSTextAlignmentCenter;
+    newbooklbl.font=[UIFont fontWithName:@"TimesNewRoman" size:20.0];
+    [bookView addSubview:newbooklbl];
+    
+    UILabel *popularlistlbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 220, sdwidth, 50)];
+    popularlistlbl.text = @"Popular Books";
+    popularlistlbl.textAlignment = NSTextAlignmentCenter;
+    popularlistlbl.font=[UIFont fontWithName:@"TimesNewRoman" size:20.0];
+    [bookView addSubview:popularlistlbl];
+    
+    UILabel *waitbooklbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 320, sdwidth, 50)];
+    waitbooklbl.text = @"Available Soon";
+    waitbooklbl.textAlignment = NSTextAlignmentCenter;
+    waitbooklbl.font=[UIFont fontWithName:@"TimesNewRoman" size:20.0];
+    [bookView addSubview:waitbooklbl];
+    
+}
+
+-(void) ContactView{
+    [self removeSuperViews];
+    contactView = [[UIView alloc]initWithFrame:CGRectMake(0, 75, sdwidth, sdheight - 105)];
+    [centreView addSubview:contactView];
+    
+    UILabel *profilelbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 10, sdwidth, 50)];
+    profilelbl.text = @"Contact Info";
+    profilelbl.textAlignment = NSTextAlignmentCenter;
+    profilelbl.font=[UIFont fontWithName:@"Papyrus" size:33.0];
+    [contactView addSubview:profilelbl];
+}
+
+#pragma mark - CenterViewSupportingMethods
+
+-(void)fetchBookNames{
+    BooksDatas = @[@"Anna Karenina",@"Alice in Wonderland",@"Wings of Fire",@"2 States",@"Half Girlfriend"];
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 21;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return [searchResults count];
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString *simpleTableIdentifier = @"RecipeCell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+    
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+    }
+    cell.textLabel.text = [searchResults objectAtIndex:indexPath.row];
+    return cell;
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    NSString *newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    [self filterContentForSearchText:newString scope:@""];
+    [tableview reloadData];
+    tableview.userInteractionEnabled=true;
+    return  YES;
+}
+
+- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
+{
+    NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"SELF contains[c] %@", searchText];
+    searchResults = [BooksDatas filteredArrayUsingPredicate:resultPredicate];
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSString *selectedbook=[searchResults objectAtIndex:indexPath.row];
+    searchResults=nil;
+    searchField.text = selectedbook;
+    [tableview reloadData];
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    searchResults=nil;
+    [tableview reloadData];
+    tableview.userInteractionEnabled=false;
+}
+
+#pragma mark - SideMenuButtonClicks
 
 -(void)leftviewCall{
     if(leftView.frame.origin.x == 0)
@@ -217,6 +438,8 @@ NSArray *searchResults;
                      }];
 }
 
+#pragma mark - SegmentControlSection
+
 -(void)MySegmentControlAction : (UISegmentedControl*) sender
 {
     switch (sender.selectedSegmentIndex)
@@ -228,221 +451,20 @@ NSArray *searchResults;
             [self BookView];
             break;
         case 2:
-            [self ProfileView];
+            [self ContactView];
              break;
         default:
             break;
     }
 }
 
--(void) MainView{
-    [self removeSuperViews];
-    homeView = [[UIView alloc]initWithFrame:CGRectMake(0, 75, sdwidth, sdheight - 105)];
-    [centreView addSubview:homeView];
-    
-    UILabel *welcomelbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 10, sdwidth, 50)];
-    welcomelbl.text = @"Welcome User";
-    welcomelbl.textAlignment = NSTextAlignmentCenter;
-    welcomelbl.font=[UIFont fontWithName:@"Papyrus" size:33.0];
-    [homeView addSubview:welcomelbl];
-    
-    UILabel *takenbooklbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 100, sdwidth, 50)];
-    takenbooklbl.text = @"Currently Reading";
-    takenbooklbl.textAlignment = NSTextAlignmentCenter;
-    takenbooklbl.font=[UIFont fontWithName:@"TimesNewRoman" size:20.0];
-    [homeView addSubview:takenbooklbl];
-    
-    UILabel *wishlistlbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 200, sdwidth, 50)];
-    wishlistlbl.text = @"To Read";
-    wishlistlbl.textAlignment = NSTextAlignmentCenter;
-    wishlistlbl.font=[UIFont fontWithName:@"TimesNewRoman" size:20.0];
-    [homeView addSubview:wishlistlbl];
-    
-    UILabel *favbooklbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 300, sdwidth, 50)];
-    favbooklbl.text = @"Favourites";
-    favbooklbl.textAlignment = NSTextAlignmentCenter;
-    favbooklbl.font=[UIFont fontWithName:@"TimesNewRoman" size:20.0];
-    [homeView addSubview:favbooklbl];
-}
-
--(void) BookView{
-    [self removeSuperViews];
-    bookView = [[UIView alloc]initWithFrame:CGRectMake(0, 75, sdwidth, sdheight - 105)];
-    [centreView addSubview:bookView];
-    
-    [self fetchBookNames]; //Fill book names to list
-    
-    searchResults = nil;
-    [tableview reloadData];
-    
-    searchField=[[UITextField alloc]initWithFrame:CGRectMake(sdwidth * 0.25, 10, sdwidth * 0.5, 30)];
-    [bookView addSubview:searchField];
-    
-    searchField.delegate = self;
-    searchField.backgroundColor=[UIColor whiteColor];
-    UIImageView *imgSearch=[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)]; // Set frame as per space required around icon
-    [imgSearch setImage:[UIImage imageNamed:@"search_books.png"]];
-    [imgSearch setContentMode:UIViewContentModeCenter];// Set content mode centre
-    searchField.leftView=imgSearch;
-    
-    
-    searchField.textColor=[UIColor whiteColor];
-    searchField.leftViewMode=UITextFieldViewModeAlways;
-    UIColor *color = [UIColor whiteColor];
-    
-    NSDictionary *textAttributes =@{ NSFontAttributeName : [UIFont fontWithName:@"Avenir" size:12.f] ,NSForegroundColorAttributeName:color};
-    NSAttributedString *attributedPlaceholder =[[NSAttributedString alloc] initWithString:@"Search Books" attributes:textAttributes];
-    [searchField setAttributedPlaceholder:attributedPlaceholder];
-    searchField.textAlignment=NSTextAlignmentLeft;
-    searchField.layer.cornerRadius=5;
-    searchField.layer.masksToBounds=true;
-    searchField.layer.borderColor=[UIColor whiteColor].CGColor;
-    searchField.backgroundColor=[UIColor clearColor];
-    searchField.layer.borderWidth=1;
-    searchField.tintColor=[UIColor whiteColor];
-    [searchField setFont:[UIFont fontWithName:@"Avenir" size:14.f]];
-    [searchField setKeyboardAppearance: UIKeyboardAppearanceAlert];
-    searchField.returnKeyType = UIReturnKeyDone;
-    
-    
-    tableview = [[UITableView alloc] initWithFrame:CGRectMake(sdwidth*0.25, 41, sdwidth*0.5, sdheight/3)];
-    tableview.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-    tableview.delegate = self;
-    tableview.dataSource=self;
-    tableview.tintColor=[UIColor clearColor];
-    [tableview setBackgroundView:nil];
-    [tableview setBackgroundColor:[UIColor clearColor]];
-    tableview.userInteractionEnabled=false;
-    tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
-    [bookView addSubview:tableview];
-    
-    UILabel *newbooklbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 100, sdwidth, 50)];
-    newbooklbl.text = @"New Arrivals";
-    newbooklbl.textAlignment = NSTextAlignmentCenter;
-    newbooklbl.font=[UIFont fontWithName:@"TimesNewRoman" size:20.0];
-    [bookView addSubview:newbooklbl];
-    
-    UILabel *popularlistlbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 200, sdwidth, 50)];
-    popularlistlbl.text = @"Popular Books";
-    popularlistlbl.textAlignment = NSTextAlignmentCenter;
-    popularlistlbl.font=[UIFont fontWithName:@"TimesNewRoman" size:20.0];
-    [bookView addSubview:popularlistlbl];
-    
-    UILabel *waitbooklbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 300, sdwidth, 50)];
-    waitbooklbl.text = @"Available Soon";
-    waitbooklbl.textAlignment = NSTextAlignmentCenter;
-    waitbooklbl.font=[UIFont fontWithName:@"TimesNewRoman" size:20.0];
-    [bookView addSubview:waitbooklbl];
-
-}
-
--(void)fetchBookNames{
-    BooksDatas = @[@"Anna Karenina",@"Alice in Wonderland",@"Wings of Fire",@"2 States",@"Half Girlfriend"];
-}
-
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 21;
-}
-
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [searchResults count];
-}
-
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *simpleTableIdentifier = @"RecipeCell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
-    
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
-    }
-    cell.textLabel.text = [searchResults objectAtIndex:indexPath.row];
-    return cell;
-}
-
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
-{
-    NSString *newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
-    [self filterContentForSearchText:newString scope:@""];
-    [tableview reloadData];
-    tableview.userInteractionEnabled=true;
-    return  YES;
-}
-
-- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
-{
-    NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"SELF contains[c] %@", searchText];
-    searchResults = [BooksDatas filteredArrayUsingPredicate:resultPredicate];
-}
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSString *selectedbook=[searchResults objectAtIndex:indexPath.row];
-    searchResults=nil;
-    searchField.text = selectedbook;
-    [tableview reloadData];
-}
-
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    searchResults=nil;
-    [tableview reloadData];
-    tableview.userInteractionEnabled=false;
-}
-
--(void) ProfileView{
-    [self removeSuperViews];
-    profileView = [[UIView alloc]initWithFrame:CGRectMake(0, 75, sdwidth, sdheight - 105)];
-    [centreView addSubview:profileView];
-    
-    UILabel *profilelbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 10, sdwidth, 50)];
-    profilelbl.text = @"User Profile";
-    profilelbl.textAlignment = NSTextAlignmentCenter;
-    profilelbl.font=[UIFont fontWithName:@"Papyrus" size:33.0];
-    [profileView addSubview:profilelbl];
-    
-    UIImageView *imgUser = [[UIImageView alloc] initWithFrame:CGRectMake(5, 50, 50, 50)];
-    [imgUser setImage:[UIImage imageNamed:@"user.png"]];
-    [imgUser setContentMode:UIViewContentModeScaleAspectFit];
-    [profileView addSubview:imgUser];
-
-    UILabel *namelbl = [[UILabel alloc]initWithFrame:CGRectMake(57, 50, sdwidth - 57, 50)];
-    namelbl.text = @"Customer Name";
-    namelbl.textAlignment = NSTextAlignmentLeft;
-    namelbl.font=[UIFont fontWithName:@"TimesNewRoman" size:18.0];
-    [profileView addSubview:namelbl];
-    
-    UILabel *aboutlbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 150, sdwidth, 50)];
-    aboutlbl.text = @"About Me";
-    aboutlbl.textAlignment = NSTextAlignmentCenter;
-    aboutlbl.font=[UIFont fontWithName:@"TimesNewRoman" size:20.0];
-    [profileView addSubview:aboutlbl];
-    
-    UILabel *otherlbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 250, sdwidth, 50)];
-    otherlbl.text = @"Other Info";
-    otherlbl.textAlignment = NSTextAlignmentCenter;
-    otherlbl.font=[UIFont fontWithName:@"TimesNewRoman" size:20.0];
-    [profileView addSubview:otherlbl];
-    
-}
+#pragma mark - Supporting Methods
 
 -(void) removeSuperViews
 {
     [homeView removeFromSuperview];
     [bookView removeFromSuperview];
-    [profileView removeFromSuperview];
+    [contactView removeFromSuperview];
 }
-
-- (IBAction)LogOut_BtnClk:(id)sender {
-    ViewController *uvc = [[ViewController alloc]init];
-    [self presentViewController:uvc animated:YES completion:nil];
-}
-
-- (void) didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 @end
-
 

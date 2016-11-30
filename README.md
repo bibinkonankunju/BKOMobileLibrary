@@ -27,3 +27,7 @@ Also change your bundle ID.
 Follow this link : https://developers.google.com/maps/documentation/ios-sdk/get-api-key
 
 Replace {YOUR_GOOGLE_API_KEY} with your Google API Key.
+
+# ASP.NET MVC Version
+
+Check this : https://github.com/bibinkonankunju/ASP.NET_MVC_MobileLibrary

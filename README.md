@@ -31,3 +31,7 @@ Replace {YOUR_GOOGLE_API_KEY} with your Google API Key.
 # ASP.NET MVC Version
 
 Check this : https://github.com/bibinkonankunju/ASP.NET_MVC_MobileLibrary
+
+# WPF Version
+
+Check this : https://github.com/bibinkonankunju/WPF_MobileLibrary

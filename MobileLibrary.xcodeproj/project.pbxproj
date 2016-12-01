@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0242EC56473A5D85369E20C6 /* libPods-MobileLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E43823E747238AB61500A6BB /* libPods-MobileLibrary.a */; };
-		D07834C21DD582FD00872957 /* menu1.png in Resources */ = {isa = PBXBuildFile; fileRef = D07834B91DD582FD00872957 /* menu1.png */; };
 		D07834CB1DD5C79C00872957 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07834C71DD5C79C00872957 /* Bolts.framework */; };
 		D07834CC1DD5C79C00872957 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07834C81DD5C79C00872957 /* FBSDKCoreKit.framework */; };
 		D07834CD1DD5C79C00872957 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07834C91DD5C79C00872957 /* FBSDKLoginKit.framework */; };
@@ -24,7 +23,6 @@
 
 /* Begin PBXFileReference section */
 		CA64C49D4B0A20BE729728C5 /* Pods-MobileLibrary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileLibrary.release.xcconfig"; path = "Pods/Target Support Files/Pods-MobileLibrary/Pods-MobileLibrary.release.xcconfig"; sourceTree = "<group>"; };
-		D07834B91DD582FD00872957 /* menu1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu1.png; sourceTree = "<group>"; };
 		D07834C71DD5C79C00872957 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		D07834C81DD5C79C00872957 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		D07834C91DD5C79C00872957 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
@@ -94,7 +92,6 @@
 		D0854ABC1DD08E5D0009F3FF /* MobileLibrary */ = {
 			isa = PBXGroup;
 			children = (
-				D07834B91DD582FD00872957 /* menu1.png */,
 				D0854AE21DD0AE080009F3FF /* main.m */,
 				D0854AC01DD08E5D0009F3FF /* AppDelegate.h */,
 				D0854AC11DD08E5D0009F3FF /* AppDelegate.m */,
@@ -180,7 +177,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0854ACD1DD08E5D0009F3FF /* LaunchScreen.storyboard in Resources */,
-				D07834C21DD582FD00872957 /* menu1.png in Resources */,
 				D0854ACA1DD08E5D0009F3FF /* Assets.xcassets in Resources */,
 				D0854AC81DD08E5D0009F3FF /* Main.storyboard in Resources */,
 			);

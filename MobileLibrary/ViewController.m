@@ -25,7 +25,14 @@ UILabel *headlbl;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor orangeColor];
+    UIGraphicsBeginImageContext(self.view.frame.size);
+    [[UIImage imageNamed:@"loginback.jpg"] drawInRect:self.view.bounds];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    self.view.backgroundColor = [UIColor colorWithPatternImage:image];
+    
+    //self.view.backgroundColor = [UIColor orangeColor];
     
     CGRect screensize = [[UIScreen mainScreen]bounds];
     swidth = screensize.size.width;

@@ -11,7 +11,7 @@
 #import <GoogleMaps/GoogleMaps.h>
 
 float sdwidth,sdheight,menuimgwidth;
-UIView *homeView, *bookView, *contactView, *leftView, *rightview, *centreView;
+UIView *homeView, *bookView, *contactView, *leftView, *rightView, *centreView;
 UITextField *searchField;
 UITableView *tableview;
 UITapGestureRecognizer *centerClick;
@@ -52,12 +52,19 @@ CLLocationManager *locationManager;
     
     leftView = [[UIView alloc]initWithFrame:CGRectMake(-(sdwidth - menuimgwidth), 25, sdwidth - menuimgwidth, sdheight-25)];
     centreView = [[UIView alloc]initWithFrame:CGRectMake(0, 25, sdwidth, sdheight-25)];
-    rightview = [[UIView alloc]initWithFrame:CGRectMake(sdwidth, 25, sdwidth - menuimgwidth, sdheight-25)];
+    rightView = [[UIView alloc]initWithFrame:CGRectMake(sdwidth, 25, sdwidth - menuimgwidth, sdheight-25)];
     [self.view addSubview:leftView];
     [self.view addSubview:centreView];
-    [self.view addSubview:rightview];
+    [self.view addSubview:rightView];
 
-    self.view.backgroundColor = [UIColor lightGrayColor];
+    UIGraphicsBeginImageContext(self.view.frame.size);
+    [[UIImage imageNamed:@"centerback.jpg"] drawInRect:self.view.bounds];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    self.view.backgroundColor = [UIColor colorWithPatternImage:image];
+    
+    //self.view.backgroundColor = [UIColor lightGrayColor];
 
     [self loadleftView];
     [self loadcenterView];
@@ -74,7 +81,12 @@ CLLocationManager *locationManager;
 #pragma mark - LeftSideView
 
 -(void)loadleftView{
-    leftView.backgroundColor = [UIColor redColor];
+    //leftView.backgroundColor = [UIColor redColor];
+    UIGraphicsBeginImageContext(self.view.frame.size);
+    [[UIImage imageNamed:@"loginback.jpg"] drawInRect:self.view.bounds];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    leftView.backgroundColor = [UIColor colorWithPatternImage:image];
     
     UILabel *profilelbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 50, sdwidth - menuimgwidth, 50)];
     profilelbl.text = @"User Profile";
@@ -124,22 +136,33 @@ CLLocationManager *locationManager;
 #pragma mark - RightSideView
 
 -(void)loadrightView{
-    rightview.backgroundColor = [UIColor purpleColor];
+    //rightView.backgroundColor = [UIColor purpleColor];
+    UIGraphicsBeginImageContext(self.view.frame.size);
+    [[UIImage imageNamed:@"rightback.jpg"] drawInRect:self.view.bounds];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    rightView.backgroundColor = [UIColor colorWithPatternImage:image];
 }
 
 #pragma mark - CenterSideView
 
 -(void)loadcenterView{
-    centreView.backgroundColor = [UIColor magentaColor];
+    //centreView.backgroundColor = [UIColor magentaColor];
+    UIGraphicsBeginImageContext(self.view.frame.size);
+    [[UIImage imageNamed:@"maincenterback.jpg"] drawInRect:self.view.bounds];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    centreView.backgroundColor = [UIColor colorWithPatternImage:image];
     
     UIImage *leftbtnImage = [UIImage imageNamed:@"menu1.png"];
-    UIButton *leftmenuBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 50, menuimgwidth - 4, 25)];
+    UIButton *leftmenuBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 10, menuimgwidth - 4, 25)];
     [leftmenuBtn setImage:leftbtnImage forState:UIControlStateNormal];
     [leftmenuBtn addTarget:self action:@selector(leftviewCall) forControlEvents:UIControlEventTouchUpInside];
     [centreView addSubview:leftmenuBtn];
     
     UIImage *rightbtnImage = [UIImage imageNamed:@"menu1.png"];
-    UIButton *rightmenuBtn = [[UIButton alloc]initWithFrame:CGRectMake(sdwidth * 0.9 + 2 , 50, menuimgwidth - 4, 25)];
+    UIButton *rightmenuBtn = [[UIButton alloc]initWithFrame:CGRectMake(sdwidth * 0.9 + 2 , 10, menuimgwidth - 4, 25)];
     [rightmenuBtn setImage:rightbtnImage forState:UIControlStateNormal];
     [rightmenuBtn addTarget:self action:@selector(rightviewCall) forControlEvents:UIControlEventTouchUpInside];
     [centreView addSubview:rightmenuBtn];
@@ -159,7 +182,7 @@ CLLocationManager *locationManager;
     segframe.size.width = sdwidth * 0.8;
     segframe.size.height = 25;
     segframe.origin.x = menuimgwidth;
-    segframe.origin.y = 50;
+    segframe.origin.y = 10;
     segmentedControl.frame=segframe;
     
     homeView = [[UIView alloc]initWithFrame:CGRectMake(0, 75, sdwidth, sdheight - 75)];
@@ -175,7 +198,7 @@ CLLocationManager *locationManager;
 
 -(void) MainView{
     [self removeSuperViews];
-    homeView = [[UIView alloc]initWithFrame:CGRectMake(0, 75, sdwidth, sdheight - 105)];
+    homeView = [[UIView alloc]initWithFrame:CGRectMake(0, 35, sdwidth, sdheight - 105)];
     [centreView addSubview:homeView];
     
     UILabel *welcomelbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 10, sdwidth, 50)];
@@ -205,7 +228,7 @@ CLLocationManager *locationManager;
 
 -(void) BookView{
     [self removeSuperViews];
-    bookView = [[UIView alloc]initWithFrame:CGRectMake(0, 75, sdwidth, sdheight - 105)];
+    bookView = [[UIView alloc]initWithFrame:CGRectMake(0, 35, sdwidth, sdheight - 105)];
     [centreView addSubview:bookView];
     
     [self fetchBookNames]; //Fill book names to list
@@ -276,7 +299,7 @@ CLLocationManager *locationManager;
 
 -(void) ContactView{
     [self removeSuperViews];
-    contactView = [[UIView alloc]initWithFrame:CGRectMake(0, 75, sdwidth, sdheight - 105)];
+    contactView = [[UIView alloc]initWithFrame:CGRectMake(0, 35, sdwidth, sdheight - 105)];
     [centreView addSubview:contactView];
     
     UILabel *profilelbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 10, sdwidth, 50)];
@@ -289,8 +312,9 @@ CLLocationManager *locationManager;
                                                             longitude:76.9366
                                                                  zoom:6];
 
-    GMSMapView *mapView = [GMSMapView mapWithFrame:CGRectMake(0, 50, sdwidth, sdheight - 145) camera:camera];
+    GMSMapView *mapView = [GMSMapView mapWithFrame:CGRectMake(0, 50, sdwidth, sdheight - 105) camera:camera];
     mapView.myLocationEnabled = YES;
+    [mapView setMinZoom:5 maxZoom:15];
     [contactView addSubview:mapView];
     
     // Creates a marker in the center of the map.
@@ -389,7 +413,7 @@ CLLocationManager *locationManager;
                           delay:0.0
                         options: UIViewAnimationCurveEaseOut
                      animations:^{
-                         [rightview setFrame:CGRectMake(sdwidth + (sdwidth - menuimgwidth), 25, sdwidth - menuimgwidth, sdheight-25)];
+                         [rightView setFrame:CGRectMake(sdwidth + (sdwidth - menuimgwidth), 25, sdwidth - menuimgwidth, sdheight-25)];
                      }
                      completion:^(BOOL finished){
                          
@@ -398,7 +422,7 @@ CLLocationManager *locationManager;
 }
 
 -(void)rightviewCall{
-    if(rightview.frame.origin.x == menuimgwidth)
+    if(rightView.frame.origin.x == menuimgwidth)
     {
         [self centerviewCall:nil];
     }
@@ -426,7 +450,7 @@ CLLocationManager *locationManager;
                           delay:0.0
                         options: UIViewAnimationCurveEaseOut
                      animations:^{
-                         [rightview setFrame:CGRectMake(menuimgwidth, 25, sdwidth - menuimgwidth, sdheight-25)];
+                         [rightView setFrame:CGRectMake(menuimgwidth, 25, sdwidth - menuimgwidth, sdheight-25)];
                      }
                      completion:^(BOOL finished){
                          
@@ -457,7 +481,7 @@ CLLocationManager *locationManager;
                           delay:0.0
                         options: UIViewAnimationCurveEaseOut
                      animations:^{
-                         [rightview setFrame:CGRectMake(sdwidth, 25, sdwidth - menuimgwidth, sdheight-25)];
+                         [rightView setFrame:CGRectMake(sdwidth, 25, sdwidth - menuimgwidth, sdheight-25)];
                      }
                      completion:^(BOOL finished){
                          

@@ -94,16 +94,22 @@ CLLocationManager *locationManager;
     profilelbl.font=[UIFont fontWithName:@"Papyrus" size:33.0];
     [leftView addSubview:profilelbl];
     
-    UIImageView *imgUser = [[UIImageView alloc] initWithFrame:CGRectMake(5, 100, 50, 50)];
+    UIImageView *imgUser = [[UIImageView alloc] initWithFrame:CGRectMake(5, 100, 76, 76)];
     [imgUser setImage:[UIImage imageNamed:@"user.png"]];
     [imgUser setContentMode:UIViewContentModeScaleAspectFit];
     [leftView addSubview:imgUser];
     
-    UILabel *namelbl = [[UILabel alloc]initWithFrame:CGRectMake(57, 100, sdwidth - menuimgwidth - 57, 50)];
-    namelbl.text = @"Customer Name";
+    UILabel *namelbl = [[UILabel alloc]initWithFrame:CGRectMake(83, 100, sdwidth - menuimgwidth - 57, 38)];
+    namelbl.text = @"John Varghese";
     namelbl.textAlignment = NSTextAlignmentLeft;
     namelbl.font=[UIFont fontWithName:@"TimesNewRoman" size:18.0];
     [leftView addSubview:namelbl];
+    
+    UILabel *emaillbl = [[UILabel alloc]initWithFrame:CGRectMake(83, 138, sdwidth - menuimgwidth - 57, 38)];
+    emaillbl.text = @"johnvarghese@gmail.com";
+    emaillbl.textAlignment = NSTextAlignmentLeft;
+    emaillbl.font=[UIFont fontWithName:@"TimesNewRoman" size:18.0];
+    [leftView addSubview:emaillbl];
     
     UILabel *aboutlbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 200, sdwidth - menuimgwidth, 50)];
     aboutlbl.text = @"About Me";
@@ -156,13 +162,13 @@ CLLocationManager *locationManager;
     centreView.backgroundColor = [UIColor colorWithPatternImage:image];
     
     UIImage *leftbtnImage = [UIImage imageNamed:@"menu1.png"];
-    UIButton *leftmenuBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 10, menuimgwidth - 4, 25)];
+    UIButton *leftmenuBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 5, menuimgwidth - 4, 25)];
     [leftmenuBtn setImage:leftbtnImage forState:UIControlStateNormal];
     [leftmenuBtn addTarget:self action:@selector(leftviewCall) forControlEvents:UIControlEventTouchUpInside];
     [centreView addSubview:leftmenuBtn];
     
     UIImage *rightbtnImage = [UIImage imageNamed:@"menu1.png"];
-    UIButton *rightmenuBtn = [[UIButton alloc]initWithFrame:CGRectMake(sdwidth * 0.9 + 2 , 10, menuimgwidth - 4, 25)];
+    UIButton *rightmenuBtn = [[UIButton alloc]initWithFrame:CGRectMake(sdwidth * 0.9 + 2 , 5, menuimgwidth - 4, 25)];
     [rightmenuBtn setImage:rightbtnImage forState:UIControlStateNormal];
     [rightmenuBtn addTarget:self action:@selector(rightviewCall) forControlEvents:UIControlEventTouchUpInside];
     [centreView addSubview:rightmenuBtn];
@@ -182,7 +188,7 @@ CLLocationManager *locationManager;
     segframe.size.width = sdwidth * 0.8;
     segframe.size.height = 25;
     segframe.origin.x = menuimgwidth;
-    segframe.origin.y = 10;
+    segframe.origin.y = 5;
     segmentedControl.frame=segframe;
     
     homeView = [[UIView alloc]initWithFrame:CGRectMake(0, 75, sdwidth, sdheight - 75)];
@@ -198,7 +204,7 @@ CLLocationManager *locationManager;
 
 -(void) MainView{
     [self removeSuperViews];
-    homeView = [[UIView alloc]initWithFrame:CGRectMake(0, 35, sdwidth, sdheight - 105)];
+    homeView = [[UIView alloc]initWithFrame:CGRectMake(0, 30, sdwidth, sdheight - 105)];
     [centreView addSubview:homeView];
     
     UILabel *welcomelbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 10, sdwidth, 50)];
@@ -228,7 +234,7 @@ CLLocationManager *locationManager;
 
 -(void) BookView{
     [self removeSuperViews];
-    bookView = [[UIView alloc]initWithFrame:CGRectMake(0, 35, sdwidth, sdheight - 105)];
+    bookView = [[UIView alloc]initWithFrame:CGRectMake(0, 30, sdwidth, sdheight - 105)];
     [centreView addSubview:bookView];
     
     [self fetchBookNames]; //Fill book names to list
@@ -299,7 +305,7 @@ CLLocationManager *locationManager;
 
 -(void) ContactView{
     [self removeSuperViews];
-    contactView = [[UIView alloc]initWithFrame:CGRectMake(0, 35, sdwidth, sdheight - 105)];
+    contactView = [[UIView alloc]initWithFrame:CGRectMake(0, 30, sdwidth, sdheight - 105)];
     [centreView addSubview:contactView];
     
     UILabel *profilelbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 10, sdwidth, 50)];
@@ -312,7 +318,7 @@ CLLocationManager *locationManager;
                                                             longitude:76.9366
                                                                  zoom:6];
 
-    GMSMapView *mapView = [GMSMapView mapWithFrame:CGRectMake(0, 50, sdwidth, sdheight - 105) camera:camera];
+    GMSMapView *mapView = [GMSMapView mapWithFrame:CGRectMake(0, 50, sdwidth, sdheight - 100) camera:camera];
     mapView.myLocationEnabled = YES;
     [mapView setMinZoom:5 maxZoom:15];
     [contactView addSubview:mapView];

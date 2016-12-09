@@ -10,7 +10,7 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 @import GoogleMaps;
 
-NSString *APIKey = @“{YOUR_GOOGLE_API_KEY}”;
+NSString *APIKey = @"AIzaSyBjuSm7q3MSKJsiIwZ6CCDZgB_L1XxV_tA";
 
 @interface AppDelegate ()
 

@@ -8,6 +8,8 @@
 
 #import "ViewController.h"
 #import "UserViewController.h"
+#import "SignupViewController.h"
+#import "ResetPasswordViewController.h"
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 
@@ -17,8 +19,8 @@
 
 @implementation ViewController
 float swidth,sheight;
-UITextField *textUser,*textPwd;
-UIButton *logBtn, *cancelBtn, *regBtn;
+UITextField *textUser,*textPswd;
+UIButton *logBtn, *forgotBtn, *regBtn;
 UILabel *headlbl;
 
 
@@ -46,49 +48,38 @@ UILabel *headlbl;
     [self.view addSubview:applbl];
     
     
-    headlbl = [[UILabel alloc]initWithFrame:CGRectMake(swidth/3-15, sheight/3 - 75, swidth/2, 60) ];
+    headlbl = [[UILabel alloc]initWithFrame:CGRectMake(0, sheight/3 - 75, swidth, 60) ];
     headlbl.text=@"User Login";
+    headlbl.textAlignment = NSTextAlignmentCenter;
     headlbl.font=[UIFont fontWithName:@"Papyrus" size:33.0];
     [self.view addSubview:headlbl];
     
     
-    textUser=[[UITextField alloc]init];
-    CGRect frm=textUser.frame;
-    frm.size.width=swidth/3;
-    frm.size.height=25;
-    frm.origin.x=swidth/3;
-    frm.origin.y=sheight/3;
-    textUser.frame=frm;
+    textUser=[[UITextField alloc]initWithFrame:CGRectMake(swidth/3, sheight/3, swidth/3, 25)];
     textUser.placeholder=@"User Name";
     textUser.autocorrectionType = UITextAutocorrectionTypeNo;
     textUser.autocapitalizationType = UITextAutocapitalizationTypeNone;
     textUser.backgroundColor=[UIColor whiteColor];
     [self.view addSubview:textUser];
     
-    textPwd = [[UITextField alloc]init];
-    CGRect pfrm = textPwd.frame;
-    pfrm.origin.x = swidth/3;
-    pfrm.origin.y = sheight/3+35;
-    pfrm.size.width = swidth/3;
-    pfrm.size.height = 25;
-    textPwd.frame = pfrm;
-    textPwd.placeholder=@"Password";
-    textPwd.secureTextEntry=YES;
-    textPwd.backgroundColor=[UIColor whiteColor];
-    [self.view addSubview:textPwd];
+    textPswd = [[UITextField alloc]initWithFrame:CGRectMake(swidth/3, sheight/3+35, swidth/3, 25) ];
+    textPswd.placeholder=@"Password";
+    textPswd.secureTextEntry=YES;
+    textPswd.backgroundColor=[UIColor whiteColor];
+    [self.view addSubview:textPswd];
     
     logBtn = [[UIButton alloc]initWithFrame:CGRectMake(swidth/3, sheight/3 + 70, swidth/6-2, 25)];
     [logBtn setTitle:@"LogIn" forState:UIControlStateNormal];
     [logBtn addTarget:self action:@selector(UserLogin_BtnClk:) forControlEvents:UIControlEventTouchDown];
     [self.view addSubview:logBtn];
     
-    cancelBtn = [[UIButton alloc]initWithFrame:CGRectMake(swidth/3+swidth/6+4, sheight/3+70, swidth/6-2, 25)];
-    [cancelBtn setTitle:@"Cancel" forState:(UIControlStateNormal)];
-    [cancelBtn addTarget:self action:@selector(Cancel_BtnClk:) forControlEvents:UIControlEventTouchDown];
-    [self.view addSubview:cancelBtn];
+    forgotBtn = [[UIButton alloc]initWithFrame:CGRectMake(swidth/3+swidth/6+4, sheight/3+70, swidth/6-2, 25)];
+    [forgotBtn setTitle:@"Forgot?" forState:(UIControlStateNormal)];
+    [forgotBtn addTarget:self action:@selector(Forgot_BtnClk:) forControlEvents:UIControlEventTouchDown];
+    [self.view addSubview:forgotBtn];
     
-    regBtn = [[UIButton alloc]initWithFrame:CGRectMake(swidth/3+swidth/6+4, sheight/3 + 100, swidth/6 - 2, 25)];
-    [regBtn setTitle:@"SignUp" forState:UIControlStateNormal];
+    regBtn = [[UIButton alloc]initWithFrame:CGRectMake(swidth/3, sheight/3 + 100, swidth/3, 25)];
+    [regBtn setTitle:@"SignUp?" forState:UIControlStateNormal];
     [regBtn addTarget:self action:@selector(Reg_BtnClk:) forControlEvents:UIControlEventTouchDown];
     [self.view addSubview:regBtn];
     
@@ -105,13 +96,8 @@ UILabel *headlbl;
 }
 
 -(IBAction)Reg_BtnClk:(id)sender{
-    UIAlertController *alertreg = [UIAlertController alertControllerWithTitle:@"Registration" message:@"Register Now" preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-    [alertreg addAction:ok];
-    [self presentViewController:alertreg animated:YES completion:nil];
-    
-    //    RegViewController *rvc = [[RegViewController alloc]init];
-    //    [self presentViewController:rvc animated:YES completion:nil];
+    SignupViewController *suvc = [[SignupViewController alloc]init];
+    [self presentViewController:suvc animated:YES completion:nil];
 }
 - (IBAction)UserLogin_BtnClk:(id)sender {
     //    NSString *usrNm = textUser.text;
@@ -126,9 +112,9 @@ UILabel *headlbl;
     [self presentViewController:uvc animated:YES completion:nil];
 }
 
-- (IBAction)Cancel_BtnClk:(id)sender {
-    textUser.text = @"";
-    textPwd.text = @"";
+- (IBAction)Forgot_BtnClk:(id)sender {
+    ResetPasswordViewController *rpvc = [[ResetPasswordViewController alloc]init];
+    [self presentViewController:rpvc animated:YES completion:nil];
 }
 -(void)loginButtonDidLogOut:(FBSDKLoginButton *)loginButton{
     NSLog(@"logout");

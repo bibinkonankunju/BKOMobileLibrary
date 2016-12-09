@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0242EC56473A5D85369E20C6 /* libPods-MobileLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E43823E747238AB61500A6BB /* libPods-MobileLibrary.a */; };
+		D00542831DFA722D0062FFD5 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D00542821DFA722D0062FFD5 /* SignupViewController.m */; };
+		D00542861DFA72470062FFD5 /* ResetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D00542851DFA72470062FFD5 /* ResetPasswordViewController.m */; };
 		D07741BE1DEFFDA70071115E /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07741BA1DEFFDA70071115E /* Bolts.framework */; };
 		D07741BF1DEFFDA70071115E /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07741BB1DEFFDA70071115E /* FBSDKCoreKit.framework */; };
 		D07741C01DEFFDA70071115E /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07741BC1DEFFDA70071115E /* FBSDKLoginKit.framework */; };
@@ -23,6 +25,10 @@
 
 /* Begin PBXFileReference section */
 		CA64C49D4B0A20BE729728C5 /* Pods-MobileLibrary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileLibrary.release.xcconfig"; path = "Pods/Target Support Files/Pods-MobileLibrary/Pods-MobileLibrary.release.xcconfig"; sourceTree = "<group>"; };
+		D00542811DFA722D0062FFD5 /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupViewController.h; sourceTree = "<group>"; };
+		D00542821DFA722D0062FFD5 /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupViewController.m; sourceTree = "<group>"; };
+		D00542841DFA72470062FFD5 /* ResetPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResetPasswordViewController.h; sourceTree = "<group>"; };
+		D00542851DFA72470062FFD5 /* ResetPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResetPasswordViewController.m; sourceTree = "<group>"; };
 		D07741BA1DEFFDA70071115E /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = MobileLibrary/Bolts.framework; sourceTree = "<group>"; };
 		D07741BB1DEFFDA70071115E /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = MobileLibrary/FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		D07741BC1DEFFDA70071115E /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = MobileLibrary/FBSDKLoginKit.framework; sourceTree = "<group>"; };
@@ -103,6 +109,10 @@
 				D0854AD81DD08F3C0009F3FF /* UserViewController.m */,
 				D07834FD1DD5D10000872957 /* ViewController.h */,
 				D07834FE1DD5D10000872957 /* ViewController.m */,
+				D00542811DFA722D0062FFD5 /* SignupViewController.h */,
+				D00542821DFA722D0062FFD5 /* SignupViewController.m */,
+				D00542841DFA72470062FFD5 /* ResetPasswordViewController.h */,
+				D00542851DFA72470062FFD5 /* ResetPasswordViewController.m */,
 			);
 			path = MobileLibrary;
 			sourceTree = "<group>";
@@ -238,9 +248,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0854AD91DD08F3C0009F3FF /* UserViewController.m in Sources */,
+				D00542861DFA72470062FFD5 /* ResetPasswordViewController.m in Sources */,
 				D0854AE31DD0AE080009F3FF /* main.m in Sources */,
 				D0854AC21DD08E5D0009F3FF /* AppDelegate.m in Sources */,
 				D07834FF1DD5D10000872957 /* ViewController.m in Sources */,
+				D00542831DFA722D0062FFD5 /* SignupViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

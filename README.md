@@ -24,7 +24,7 @@ Also change your bundle ID.
 
 # To get Google API Key
 
-Follow this link : https://developers.google.com/maps/documentation/ios-sdk/get-api-key
+[Follow this link](https://developers.google.com/maps/documentation/ios-sdk/get-api-key)
 
 Replace {YOUR_GOOGLE_API_KEY} with your Google API Key.
 
